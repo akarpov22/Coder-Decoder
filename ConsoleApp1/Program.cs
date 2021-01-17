@@ -22,13 +22,13 @@ namespace ConsoleApp1
                 switch (action)
                 {
                     case 1:
-                        CodeMessage(Console.ReadLine());
+                        CodeMessage("");
                         Console.WriteLine("Message already coded");
                         break;
                     case 2:
                         Console.WriteLine("Write your Message in \"input.txt\", save and input smth");
                         Console.ReadKey();
-                        DecodeMessage("2");
+                        DecodeMessage("");
                         break;
                     case 0:
                         break;
@@ -61,7 +61,7 @@ namespace ConsoleApp1
         }
         public static void DecodeMessage(string Message)
         {
-            string path = @"C:\\Users\\"+Convert.ToString(Environment.UserName)+"\\Desktop\\Coder-Decoder\\Text.txt";
+            string path = @"C:\\Users\\"+Convert.ToString(Environment.UserName)+"\\Desktop\\Text.txt";
             StreamReader myread = new StreamReader(path);
 
             string message = (myread.ReadToEnd());
