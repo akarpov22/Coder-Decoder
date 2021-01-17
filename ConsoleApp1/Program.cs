@@ -28,9 +28,7 @@ namespace ConsoleApp1
                     case 2:
                         Console.WriteLine("Write your Message in \"input.txt\", save and input smth");
                         Console.ReadKey();
-                        string decodedMessage = DecodeMessage("C:\\input.txt");
-                        Console.WriteLine("Message uncoded");
-                        Console.WriteLine(decodedMessage);
+                        DecodeMessage("2");
                         break;
                     case 0:
                         break;
@@ -61,9 +59,27 @@ namespace ConsoleApp1
             mywrite.Write(newMessage);
             mywrite.Close();
         }
-        public static string DecodeMessage(string pathToFile)
+        public static void DecodeMessage(string Message)
         {
-            return "";
+            string path = @"C:\\Users\\"+Convert.ToString(Environment.UserName)+"\\Desktop\\Coder-Decoder\\Text.txt";
+            StreamReader myread = new StreamReader(path);
+
+            string message = (myread.ReadToEnd());
+
+            myread.Close();
+
+            string newMessage = "";
+
+            for (int i = 0; i<message.Length; i++) 
+            {
+                newMessage += Convert.ToChar(Convert.ToInt32(message[i]) -3);
+            }
+
+            StreamWriter mywrite = new StreamWriter(path, false);
+            mywrite.Write(newMessage);
+            mywrite.Close();
+            Console.WriteLine("Your file with text has been already upgrated!");
+            Console.WriteLine("Your message contain:"+newMessage);
         }
     }
 }
