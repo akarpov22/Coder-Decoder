@@ -37,7 +37,7 @@ namespace ConsoleApp1
             }
         }
 
-
+        //
         public static void CodeMessage(string Message)
         {
             string path = @"C:\\Users\\"+Convert.ToString(Environment.UserName)+"\\Desktop\\Coder-Decoder\\Text.txt";
