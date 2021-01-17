@@ -60,7 +60,7 @@ namespace ConsoleApp1
         }
         public static string DecodeMessage(string pathToFile)
         {
-            return "";
+            return "";//
         }
     }
 }
