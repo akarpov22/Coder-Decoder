@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.IO;
 
 namespace ConsoleApp1
 {
@@ -18,15 +19,15 @@ namespace ConsoleApp1
                 switch (action)
                 {
                     case 1:
-                        CodeMessege(Console.ReadLine());
-                        Console.WriteLine("Messege already coded");
+                        CodeMessage(Console.ReadLine());
+                        Console.WriteLine("Message already coded");
                         break;
                     case 2:
-                        Console.WriteLine("Write your messege in \"input.txt\", save and input smth");
+                        Console.WriteLine("Write your Message in \"input.txt\", save and input smth");
                         Console.ReadKey();
-                        string decodedMessege = DecodeMessege("C:\\input.txt");
-                        Console.WriteLine("Messege ucoded");
-                        Console.WriteLine(decodedMessege);
+                        string decodedMessage = DecodeMessage("C:\\input.txt");
+                        Console.WriteLine("Message uncoded");
+                        Console.WriteLine(decodedMessage);
                         break;
                     case 0:
                         break;
@@ -37,11 +38,27 @@ namespace ConsoleApp1
         }
 
 
-        public static void CodeMessege(string messege)
+        public static void CodeMessage(string Message)
         {
+            string path = @"C:\\Users\\"+Convert.ToString(Environment.UserName)+"\\Desktop\\Coder-Decoder\\Text.txt";
+            StreamReader myread = new StreamReader(path);
 
+            string message = (myread.ReadToEnd());
+
+            myread.Close();
+
+            string newMessage = "";
+
+            for (int i = 0; i<message.Length; i++) 
+            {
+                newMessage += Convert.ToChar(Convert.ToInt32(message[i]) + 3);
+            }
+
+            StreamWriter mywrite = new StreamWriter(path, false);
+            mywrite.Write(newMessage);
+            mywrite.Close();
         }
-        public static string DecodeMessege(string pathToFile)
+        public static string DecodeMessage(string pathToFile)
         {
             return "";
         }
