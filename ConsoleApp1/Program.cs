@@ -8,6 +8,9 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+            StreamWriter createdFile = new StreamWriter(@"C:\\Users\\" + Convert.ToString(Environment.UserName) + "\\Desktop\\Text.txt", true);
+            createdFile.Close();
+
             byte action = 1;
             while (action != 0) 
             {
@@ -40,7 +43,7 @@ namespace ConsoleApp1
         //
         public static void CodeMessage(string Message)
         {
-            string path = @"C:\\Users\\"+Convert.ToString(Environment.UserName)+"\\Desktop\\Coder-Decoder\\Text.txt";
+            string path = @"C:\\Users\\"+Convert.ToString(Environment.UserName)+"\\Desktop\\Text.txt";
             StreamReader myread = new StreamReader(path);
 
             string message = (myread.ReadToEnd());
