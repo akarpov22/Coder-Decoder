@@ -8,7 +8,9 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            StreamWriter createdFile = new StreamWriter(@"C:\\Users\\" + Convert.ToString(Environment.UserName) + "\\Desktop\\Text.txt", true);
+            StreamWriter createdFile = new StreamWriter(@"C:\\Users\\" + 
+                                                          Convert.ToString(Environment.UserName) + 
+                                                          "\\Desktop\\Text.txt", true);
             createdFile.Close();
 
             byte action = 1;
@@ -26,7 +28,7 @@ namespace ConsoleApp1
                         Console.WriteLine("Message already coded");
                         break;
                     case 2:
-                        Console.WriteLine("Write your Message in \"input.txt\", save and input smth");
+                        Console.WriteLine("Write your Message in \"Text.txt\", save and input smth");
                         Console.ReadKey();
                         DecodeMessage("");
                         break;
@@ -38,22 +40,18 @@ namespace ConsoleApp1
             }
         }
 
-        //
         public static void CodeMessage(string Message)
         {
-            string path = @"C:\\Users\\"+Convert.ToString(Environment.UserName)+"\\Desktop\\Text.txt";
+            string path = @"C:\\Users\\"+
+                            Convert.ToString(Environment.UserName)+
+                            "\\Desktop\\Text.txt";
             StreamReader myread = new StreamReader(path);
-
             string message = (myread.ReadToEnd());
-
             myread.Close();
 
             string newMessage = "";
-
-            for (int i = 0; i<message.Length; i++) 
-            {
+            for (int i = 0; i<message.Length; i++)
                 newMessage += Convert.ToChar(Convert.ToInt32(message[i]) + 3);
-            }
 
             StreamWriter mywrite = new StreamWriter(path, false);
             mywrite.Write(newMessage);
@@ -61,19 +59,16 @@ namespace ConsoleApp1
         }
         public static void DecodeMessage(string Message)
         {
-            string path = @"C:\\Users\\"+Convert.ToString(Environment.UserName)+"\\Desktop\\Text.txt";
+            string path = @"C:\\Users\\"+
+                            Convert.ToString(Environment.UserName)+
+                            "\\Desktop\\Text.txt";
             StreamReader myread = new StreamReader(path);
-
-            string message = (myread.ReadToEnd());
-
+            string message = myread.ReadToEnd();
             myread.Close();
 
             string newMessage = "";
-
-            for (int i = 0; i<message.Length; i++) 
-            {
+            for (int i = 0; i<message.Length; i++)
                 newMessage += Convert.ToChar(Convert.ToInt32(message[i]) -3);
-            }
 
             StreamWriter mywrite = new StreamWriter(path, false);
             mywrite.Write(newMessage);
